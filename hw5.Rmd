@@ -51,10 +51,11 @@ class(total_sf)
 
 
 ```{r }
+wash <- tracts(state = "DC", cb = TRUE, class = "sf", year = 2020)
 ggplot() + 
   geom_sf(data = total_sf, color = "lightgray") + 
   geom_sf(data = total_sf, aes(color = victim_race))
-wash <- tracts(state = "DC", cb = TRUE, class = "sf", year = 2020)
+
 
 ```
 
