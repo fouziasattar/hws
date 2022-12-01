@@ -48,10 +48,6 @@ total_sf <- st_as_sf(total, coords = c("lon", "lat")) %>%
 
 class(total_sf)
 
-```
-
-
-```{r pressure, echo=TRUE}
 #Plot
 ggplot() + 
   geom_sf(data = total_sf, color = "lightgray") + 
@@ -59,5 +55,6 @@ ggplot() +
 wash <- tracts(state = "DC", cb = TRUE, class = "sf", year = 2020)
 
 ```
+
 
 
