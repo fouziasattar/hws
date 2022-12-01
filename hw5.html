@@ -449,16 +449,17 @@ total_data &lt;- full_join(unsolve,solved)</code></pre>
 
 class(total_sf)</code></pre>
 <pre><code>## [1] &quot;sf&quot;         &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
-<pre class="r"><code>wash &lt;- tracts(state = &quot;DC&quot;, cb = TRUE, class = &quot;sf&quot;, year = 2020)</code></pre>
+<pre class="r"><code>wash &lt;- tracts(state = &quot;DC&quot;, cb = TRUE, class = &quot;sf&quot;)</code></pre>
+<pre><code>## Retrieving data for the year 2020</code></pre>
 <pre><code>## 
   |                                                                            
   |                                                                      |   0%
   |                                                                            
   |=======================                                               |  32%
   |                                                                            
-  |===================================                                   |  50%
+  |==============================================                        |  66%
   |                                                                            
-  |==========================================================            |  83%
+  |==================================================                    |  71%
   |                                                                            
   |======================================================================| 100%</code></pre>
 <pre class="r"><code>ggplot() + 
