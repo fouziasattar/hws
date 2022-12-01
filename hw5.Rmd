@@ -1,11 +1,11 @@
 ---
 title: "hw5"
 author: "Fouzia"
-date: "`r Sys.Date()`"
+date: "11/30/2022"
 output: html_document
 ---
 
-```{r homocide}
+```{r }
 knitr::opts_chunk$set(echo = TRUE)
 
 library(readr)
