@@ -1,0 +1,63 @@
+---
+title: "hw5"
+author: "Fouzia"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r homocide}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readr)
+library(tidyverse)
+library(stringr)
+library(dplyr)
+library(viridis)
+library(ggthemes)
+library(ggfortify)
+library(forcats)
+library(sf)
+library(ggplot2)
+library(scales)
+library(tigris)
+
+homicide_data <- read_csv("C:/Users/Fouzia Sattar/Desktop/hw5/hw5/homicide-data.csv")
+View(homicide_data)
+
+washington_1 <-homicide_data %>% 
+  filter(city=="Washington") 
+
+unsolve <- washington_1 %>% 
+   filter(disposition %in% c("Closed without arrest", "Open/No arrest")) %>% 
+  rename("Unsolved"= disposition) %>% 
+  group_by(victim_race)
+
+
+solved <-washington_1 %>% 
+   filter(disposition %in% c("Closed by arrest")) %>% 
+  rename("solved"= disposition) %>% 
+  group_by(victim_race) 
+
+library(tigris)
+library(sf)
+
+total <- full_join(unsolve,solved)
+total_sf <- st_as_sf(total, coords = c("lon", "lat")) %>% 
+  dplyr::mutate(victim_race = forcats::fct_lump(victim_race, n = 3)) %>%
+  dplyr::count(victim_race)
+
+class(total_sf)
+
+```
+
+
+```{r pressure, echo=TRUE}
+
+ggplot() + 
+  geom_sf(data = total_sf, color = "lightgray") + 
+  geom_sf(data = total_sf, aes(color = victim_race))
+wash <- tracts(state = "DC", cb = TRUE, class = "sf", year = 2020)
+
+```
+
+
