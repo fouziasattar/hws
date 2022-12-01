@@ -52,7 +52,7 @@ class(total_sf)
 
 
 ```{r pressure, echo=TRUE}
-
+#Plot
 ggplot() + 
   geom_sf(data = total_sf, color = "lightgray") + 
   geom_sf(data = total_sf, aes(color = victim_race))
