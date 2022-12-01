@@ -440,10 +440,10 @@ solved &lt;-washington_1 %&gt;%
 
 library(tigris)
 library(sf)
-total &lt;- full_join(unsolve,solved)</code></pre>
+total_data &lt;- full_join(unsolve,solved)</code></pre>
 <pre><code>## Joining, by = c(&quot;uid&quot;, &quot;reported_date&quot;, &quot;victim_last&quot;, &quot;victim_first&quot;,
 ## &quot;victim_race&quot;, &quot;victim_age&quot;, &quot;victim_sex&quot;, &quot;city&quot;, &quot;state&quot;, &quot;lat&quot;, &quot;lon&quot;)</code></pre>
-<pre class="r"><code>total_sf &lt;- st_as_sf(total, coords = c(&quot;lon&quot;, &quot;lat&quot;)) %&gt;% 
+<pre class="r"><code>total_sf &lt;- st_as_sf(total_data, coords = c(&quot;lon&quot;, &quot;lat&quot;)) %&gt;% 
   dplyr::mutate(victim_race = forcats::fct_lump(victim_race, n = 3)) %&gt;%
   dplyr::count(victim_race)
 
@@ -456,9 +456,9 @@ class(total_sf)</code></pre>
   |                                                                            
   |=======================                                               |  32%
   |                                                                            
-  |==============================================                        |  66%
+  |===================================                                   |  50%
   |                                                                            
-  |==================================================                    |  71%
+  |==========================================================            |  83%
   |                                                                            
   |======================================================================| 100%</code></pre>
 <pre class="r"><code>ggplot() + 

@@ -40,9 +40,9 @@ solved <-washington_1 %>%
 
 library(tigris)
 library(sf)
-total <- full_join(unsolve,solved)
+total_data <- full_join(unsolve,solved)
 
-total_sf <- st_as_sf(total, coords = c("lon", "lat")) %>% 
+total_sf <- st_as_sf(total_data, coords = c("lon", "lat")) %>% 
   dplyr::mutate(victim_race = forcats::fct_lump(victim_race, n = 3)) %>%
   dplyr::count(victim_race)
 
